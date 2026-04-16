@@ -1,3 +1,4 @@
+![CI Pipeline](https://github.com/Gregir121/genetic_TSP/actions/workflows/ci_pipeline.yml/badge.svg)
 🚛 Traveling Salesperson Problem - Genetic Algorithm Solver
 Implementation of genetic algorithm wchich is used to solve the TSP problem. Added visualization and path handling so 
 project can be cloned.
