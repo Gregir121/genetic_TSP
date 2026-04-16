@@ -1,12 +1,34 @@
-from fitness_calculation import fitness_calc
+import unittest
+import numpy as np
 from initialization import initialization
-from selection import selection
+from fitness_calculation import fitness_calc
 
-closed_points, cities, starting_population, distance_matrix = initialization(20, 50)
+class TestGeneticAlgorithm(unittest.TestCase):
+    def setUp(self):
+        self.pop_size = 50
+        self.cities_count = 10
+        self.closed_pts, self.cities, self.pop, self.dist_matrix = initialization(self.cities_count, self.pop_size)
 
-fitness, distance, best_index = fitness_calc(distance_matrix, starting_population, 0.0000001)
+    def test_init_shapes(self):
+        """Checks matrix shapes in initialization function"""
+        self.assertEqual(self.pop.shape, (self.pop_size, self.cities_count))
+        self.assertEqual(self.dist_matrix.shape, (self.cities_count, self.cities_count))
 
-selection(starting_population, fitness, 'ranked')
+    def test_unique(self):
+        """Tests if every city is visited exactly once"""
+        for individual in self.pop:
+            unique_cities = np.unique(individual)
+            self.assertEqual(len(unique_cities), self.cities_count,"Error!! Cities are repeating")
 
+    def test_fitness(self):
+        """Tests if value of fitness is not equal to zero"""
+        fitness, distances, best_idx = fitness_calc(self.dist_matrix, self.pop)
+        self.assertTrue(np.all(fitness > 0))
+        self.assertTrue(np.all(np.isfinite(fitness)))
+
+
+
+if __name__ == '__main__':
+    unittest.main()
 
 

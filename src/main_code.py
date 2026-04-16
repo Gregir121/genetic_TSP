@@ -4,8 +4,15 @@ from visualization import plot_convergence
 import os
 
 if __name__ == '__main__':
+    target_generations = 1000
+    cities_count = 70
+    pop_size = 150
 
-    best_dist, best_paths, starting_population, cities = run_evolution(1000, 70, 150)
+    if os.environ.get('CI') == 'true':
+        print('Overriding generations for smoke test')
+        target_generations = 10
+
+    best_dist, best_paths, starting_population, cities = run_evolution(target_generations, cities_count, pop_size)
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
