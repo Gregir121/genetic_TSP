@@ -17,9 +17,9 @@ project can be cloned.
 - graphs/ - Output directory for generated GIF animations and convergence plots.
 
 🚀 Quick Start
-git clone https://github.com/Gregir121/genetic_TSP.git
-pip install -r requirements.txt
-python src/main_code.py
+- git clone https://github.com/Gregir121/genetic_TSP.git
+- pip install -r requirements.txt
+- python src/main_code.py
 
 📊 Results visualization
 Below is the result of the evolution process for 70 cities, utilizing Inversion Mutation and Ordered Crossover (OX) to eliminate path crossings.
